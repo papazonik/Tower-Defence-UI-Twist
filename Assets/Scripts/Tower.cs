@@ -6,7 +6,9 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private GameObject firePoint;
     public int cost;
+    public float range;
     private Vector3 firePointVector3;
+    public GameObject projectilePrefab;
 
 
     private void Awake()
@@ -19,12 +21,18 @@ public class Tower : MonoBehaviour
         
     }
 
+    void Shoot(Vector3 firePointPos)
+    {
+        Instantiate(projectilePrefab, firePointPos, Quaternion.identity);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            print("BuildTower");
+            //print("BuildTower");
+            Shoot(firePointVector3);
         }
     }
 }

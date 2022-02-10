@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public Vector3 targetPosition;
     public int damage;
-    GameObject projectilePrefab;
-    // Start is called before the first frame update
-    void Start()
+    public float speed;
+    float destroyDistance = 1f;
+
+    private void Start()
     {
-        
+        speed = 2f;
+        targetPosition = new Vector3(20, 20, 0);
     }
 
-    private static void Spawn()
+    private void Update()
     {
-        //Instantiate(projectilePrefab)
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        transform.position += moveDirection * speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, targetPosition) < destroyDistance)
+        {
+            Destroy(gameObject);
+        }
     }
 }
