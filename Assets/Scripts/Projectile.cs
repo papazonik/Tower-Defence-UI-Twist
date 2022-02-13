@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Vector3 targetPosition;
+    private Transform target;
     public int damage;
     public float speed;
     float destroyDistance = 1f;
 
     private void Start()
     {
-        speed = 2f;
-        targetPosition = new Vector3(20, 20, 0);
+        speed = 10f;
+    }
+
+    public void SetTarget(Transform _target)
+    {
+        target = _target;
     }
 
     private void Update()
     {
-        Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Vector3 moveDirection = (target.position - transform.position).normalized;
         transform.position += moveDirection * speed * Time.deltaTime;
-        if (Vector3.Distance(transform.position, targetPosition) < destroyDistance)
+        if (Vector3.Distance(transform.position, target.position) < destroyDistance)
         {
             Destroy(gameObject);
         }

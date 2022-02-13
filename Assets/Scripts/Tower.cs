@@ -6,33 +6,82 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private GameObject firePoint;
     public int cost;
-    public float range;
+    public float range = 4f;
+    private float fireRate = 1f;
+    private float fireCountdown = 0f;
     private Vector3 firePointVector3;
     public GameObject projectilePrefab;
+    private Transform currentTarget;
 
 
     private void Awake()
     {
         firePointVector3 = firePoint.transform.position;
     }
-    // Start is called before the first frame update
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,range);
+    }
+
     void Start()
     {
-        
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
-    void Shoot(Vector3 firePointPos)
+    void Shoot()
     {
-        Instantiate(projectilePrefab, firePointPos, Quaternion.identity);
+        GameObject _projectile = Instantiate(projectilePrefab, firePointVector3, Quaternion.identity);
+        Projectile projectile = _projectile.GetComponent<Projectile>();
+        projectile.SetTarget(currentTarget);
     }
 
-    // Update is called once per frame
+    void UpdateTarget()         //Find closest enemy in range
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        var shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+        foreach (var enemy in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+        if (nearestEnemy && shortestDistance <= range)
+        {
+            currentTarget = nearestEnemy.transform;
+        }
+        else
+        {
+            currentTarget = null;
+        }       
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             //print("BuildTower");
-            Shoot(firePointVector3);
+            
+        }
+
+
+        if (!currentTarget)
+        {
+            return;
+        }
+        else
+        {
+            if (fireCountdown <= 0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+            fireCountdown -= Time.deltaTime;
         }
     }
 }
