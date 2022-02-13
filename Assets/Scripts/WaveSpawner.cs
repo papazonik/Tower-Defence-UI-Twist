@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class WaveSpawner : MonoBehaviour
     public Button waveButton;
     float spawnRate;
     public Transform spawnPoint;
+
     uint nextWave = 0;
+    public TextMeshProUGUI levelText;
+
 
     [System.Serializable]
     public class Wave
@@ -40,6 +44,7 @@ public class WaveSpawner : MonoBehaviour
     public void StartWaveButtonPress()
     {
         StartCoroutine(SpawnWave(waves[nextWave]));
+        levelText.text = ("Level: " + (nextWave + 1));
     }
 
     public IEnumerator SpawnWave(Wave _wave)

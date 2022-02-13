@@ -11,7 +11,7 @@ public class Tower : MonoBehaviour
     private float fireCountdown = 0f;
     private Vector3 firePointVector3;
     public GameObject projectilePrefab;
-    private Transform currentTarget;
+    private GameObject currentTarget;
 
 
     private void Awake()
@@ -53,7 +53,7 @@ public class Tower : MonoBehaviour
         }
         if (nearestEnemy && shortestDistance <= range)
         {
-            currentTarget = nearestEnemy.transform;
+            currentTarget = nearestEnemy;
         }
         else
         {

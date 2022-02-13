@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Transform target;
-    public int damage;
+    private GameObject target;
+    public int damage = 50;
     public float speed;
     float destroyDistance = 1f;
 
@@ -14,9 +14,15 @@ public class Projectile : MonoBehaviour
         speed = 10f;
     }
 
-    public void SetTarget(Transform _target)
+    public void SetTarget(GameObject _target)
     {
-        target = _target;
+        target = _target;       
+    }
+
+    public void HitTarget()
+    {
+        var healthScript = target.GetComponent<Health>();
+        healthScript.TakeDamage(damage);
     }
 
     private void Update()
@@ -26,11 +32,14 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Vector3 moveDirection = (target.position - transform.position).normalized;
+        Vector3 moveDirection = (target.transform.position - transform.position).normalized;
         transform.position += moveDirection * speed * Time.deltaTime;
-        if (Vector3.Distance(transform.position, target.position) < destroyDistance)
+
+        if (Vector3.Distance(transform.position, target.transform.position) < destroyDistance)
         {
+            HitTarget();
             Destroy(gameObject);
+            return;
         }
     }
 }
