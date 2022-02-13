@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildTower : MonoBehaviour
-{
-    public Transform towerPrefab;
+{ 
     public Transform towerPreviewPrefab;
+    public Transform secondTowerPreviewPrefab;
 
     public void BuildTowerSelect()
     {
-        Instantiate(towerPreviewPrefab, transform.position, transform.rotation);
+        Instantiate(towerPreviewPrefab);
+    }
+    public void BuildSecondsTowerSelect()
+    {
+        Instantiate(secondTowerPreviewPrefab);
     }
 }

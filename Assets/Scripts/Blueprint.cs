@@ -23,5 +23,9 @@ public class Blueprint : MonoBehaviour
             Instantiate(towerPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+        else if(Input.GetMouseButton(1))
+        {
+            Destroy(gameObject);
+        }
     }
 }
