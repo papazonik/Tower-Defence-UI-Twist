@@ -11,7 +11,6 @@ public class WaveSpawner : MonoBehaviour
     float spawnRate;
     public Transform spawnPoint;
     uint nextWave = 0;
-    private float searchCountdown = 1f;
 
     [System.Serializable]
     public class Wave
@@ -26,32 +25,21 @@ public class WaveSpawner : MonoBehaviour
         spawnRate = 1f;
     }
 
-    private void Update()
+    void OnLevelCompletete()
     {
-        if (!EnemiesAlive())
+        nextWave++;
+        if (nextWave > waves.Length - 1)
         {
-            waveButton.gameObject.SetActive(true);
+            //Game Won!
+            print("GAME WON. Looping from first wave");
+            nextWave = 0;
         }
-    }
-
-    bool EnemiesAlive()
-    {
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown > 0f)
-        {
-            return true;
-        }
-        searchCountdown = 1f;
-        if (GameObject.FindGameObjectWithTag("Enemy"))
-        {
-            return true;
-        }
-        return false;
+        waveButton.gameObject.SetActive(true);
     }
 
     public void StartWaveButtonPress()
     {
-        StartCoroutine(SpawnWave(waves[0]));
+        StartCoroutine(SpawnWave(waves[nextWave]));
     }
 
     public IEnumerator SpawnWave(Wave _wave)
@@ -61,6 +49,7 @@ public class WaveSpawner : MonoBehaviour
             SpawnEnemy(_wave.enemies[i]);
             yield return new WaitForSeconds(1f / spawnRate);
         }
+        OnLevelCompletete();
         yield break;
     }
 
