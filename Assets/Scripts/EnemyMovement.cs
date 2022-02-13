@@ -8,20 +8,21 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform target;
     private int wayPointIndex = 0;
+    SpriteRenderer enemySpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         target = Waypoints.wayPoints[wayPointIndex];
+        enemySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 moveDirection = target.position - transform.position;
-        //transform.position += moveDirection * speed * Time.deltaTime;
         transform.Translate(moveDirection.normalized * speed * Time.deltaTime, Space.World);
-
+        FlipSprite(moveDirection.normalized);
         if (Vector2.Distance(transform.position, target.position) <= 0.2f) //If very close to waypoint, go to next one
         {
             GetNextWaypoint();
@@ -37,5 +38,17 @@ public class EnemyMovement : MonoBehaviour
         }
         wayPointIndex ++;
         target = Waypoints.wayPoints[wayPointIndex];
+    }
+
+    void FlipSprite(Vector2 direction)
+    {
+        if (direction.x < 0)
+        {
+            enemySpriteRenderer.flipX = true;
+        }
+        else
+        {
+            enemySpriteRenderer.flipX = false;
+        }
     }
 }
