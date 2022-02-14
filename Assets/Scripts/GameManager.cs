@@ -8,21 +8,38 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public int gold;
-    private int lives = 0;
+    private int lives = 10;
     public Text goldDisplay;
     public TextMeshProUGUI pauseText;
+    public Transform heartPrefab;
+    List<Transform> hearts;
 
     bool paused = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        var hearts = FindObjectsOfType<Heart>();
-        foreach (var heart in hearts)
+        hearts = new List<Transform>();
+        for (int i = 0; i < lives; i++)
         {
-            lives++;
+           SpawnHeart(i);
         }
-        print(lives);
+    }
+
+    void SpawnHeart(int positionIndex)
+    {
+        Vector3 spawnpos = new Vector3(-6.5f + positionIndex, 4, 0);
+        Transform newHeart = Instantiate(heartPrefab, spawnpos, Quaternion.identity);
+        hearts.Add(newHeart);
+    }
+
+    public void LoseHeart()
+    {
+        if (hearts.Count > 0)
+        {
+            Destroy(hearts[hearts.Count - 1].gameObject);
+            hearts.RemoveAt(hearts.Count - 1);
+        }
     }
 
     public void PauseToggle()
@@ -51,6 +68,7 @@ public class GameManager : MonoBehaviour
         if (lives >= 0)
         {
             lives--;
+            LoseHeart();
         }
     }
 

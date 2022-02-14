@@ -25,14 +25,6 @@ public class Heart : MonoBehaviour
         spriteRenderer.sprite = sprite;
     }
 
-    private void OnDestroy()
-    {
-        print("Dead");
-        gameManager.LoseLife();
-        print(gameManager.GetLives());
-    }
-
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

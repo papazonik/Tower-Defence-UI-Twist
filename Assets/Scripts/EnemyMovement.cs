@@ -9,10 +9,11 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     private int wayPointIndex = 0;
     SpriteRenderer enemySpriteRenderer;
+    GameManager gameManager;
 
-    // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         target = Waypoints.wayPoints[wayPointIndex];
         enemySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
@@ -33,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (wayPointIndex >= Waypoints.wayPoints.Length - 1)
         {
+            gameManager.LoseLife();
             Destroy(gameObject);
             return;
         }
