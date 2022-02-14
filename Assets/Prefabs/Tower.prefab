@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6310494903813109662}
   - component: {fileID: 1482824191}
+  - component: {fileID: 8997744278963494865}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -161,3 +162,16 @@ MonoBehaviour:
   cost: 10
   range: 4.5
   projectilePrefab: {fileID: 5548432597886352219, guid: 4d0c3d171ba124e4288513ed62392f9b, type: 3}
+--- !u!114 &8997744278963494865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310494903813109663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7859c46184f25fb46a0696cd24345647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: ec4bda6b9d36c824ca6e970166c83808, type: 3}

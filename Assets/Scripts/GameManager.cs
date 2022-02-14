@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Transform heartPrefab;
     List<Transform> hearts;
     public GameObject gameOver;
+    public AudioClip loseLife;
 
     bool paused = false;
 
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
         if (lives >= 0)
         {
             lives--;
+            SoundManager.Instance.PlaySound(loseLife);
             if (lives == 0)
             {
                 GameOver();

@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public int damage = 50;
     public float speed;
     float destroyDistance = 1f;
+    public AudioClip hitTarget;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Projectile : MonoBehaviour
 
     public void HitTarget()
     {
+        SoundManager.Instance.PlaySound(hitTarget);
         var healthScript = target.GetComponent<Health>();
         healthScript.TakeDamage(damage);
     }

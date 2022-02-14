@@ -11,6 +11,7 @@ public class Heart : MonoBehaviour
     public Sprite damage3;
     SpriteRenderer spriteRenderer;
     GameManager gameManager;
+    public AudioClip takeDamage;
 
     void Start()
     {
@@ -35,11 +36,11 @@ public class Heart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             health.TakeDamage(10);
-            print(health.getCurrentHealth());
+            SoundManager.Instance.PlaySound(takeDamage);
         }
         if (health.getCurrentHealth() <= 25)
         {
-            SetSprite(damage3);
+            SetSprite(damage3);           
         }
         else if (health.getCurrentHealth() <= 50)
         {
