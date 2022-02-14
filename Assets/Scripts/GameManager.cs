@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pauseText;
     public Transform heartPrefab;
     List<Transform> hearts;
+    public GameObject gameOver;
 
     bool paused = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameOver.SetActive(false);
         hearts = new List<Transform>();
         for (int i = 0; i < lives; i++)
         {
@@ -35,12 +37,38 @@ public class GameManager : MonoBehaviour
 
     public void LoseHeart()
     {
+        //LoseLife();
         if (hearts.Count > 0)
         {
+            if (hearts[hearts.Count - 1] == null)
+            {
+                return;
+            }
             Destroy(hearts[hearts.Count - 1].gameObject);
             hearts.RemoveAt(hearts.Count - 1);
         }
     }
+
+    void GameOver()
+    {
+        Time.timeScale = 0.0f;
+        gameOver.SetActive(true);
+    }
+
+    public void Replay()
+    {
+        Time.timeScale = 1.0f;
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.LogWarning("Game Quit");
+    }
+
+
 
     public void PauseToggle()
     {
@@ -68,8 +96,12 @@ public class GameManager : MonoBehaviour
         if (lives >= 0)
         {
             lives--;
-            LoseHeart();
+            if (lives == 0)
+            {
+                GameOver();
+            }
         }
+        print("Lives: " + lives);
     }
 
 

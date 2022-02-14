@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (wayPointIndex >= Waypoints.wayPoints.Length - 1)
         {
-            gameManager.LoseLife();
+            gameManager.LoseHeart();
             Destroy(gameObject);
             return;
         }

@@ -20,6 +20,11 @@ public class Heart : MonoBehaviour
         SetSprite(noDamage);
     }
 
+    private void OnDestroy()
+    {
+        gameManager.LoseLife();
+    }
+
     void SetSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;

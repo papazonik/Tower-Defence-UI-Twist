@@ -34,8 +34,7 @@ public class WaveSpawner : MonoBehaviour
         nextWave++;
         if (nextWave > waves.Length - 1)
         {
-            //Game Won!
-            print("GAME WON. Looping from first wave");
+            print("NO MORE WAVES. Looping from first wave");
             nextWave = 0;
         }
         waveButton.gameObject.SetActive(true);
