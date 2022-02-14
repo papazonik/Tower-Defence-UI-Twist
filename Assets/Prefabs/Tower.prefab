@@ -159,5 +159,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 377305305}
   cost: 10
-  range: 4
+  range: 4.5
   projectilePrefab: {fileID: 5548432597886352219, guid: 4d0c3d171ba124e4288513ed62392f9b, type: 3}

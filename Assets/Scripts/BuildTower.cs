@@ -11,7 +11,7 @@ public class BuildTower : MonoBehaviour
     {
         Instantiate(towerPreviewPrefab);
     }
-    public void BuildSecondsTowerSelect()
+    public void BuildSecondTowerSelect()
     {
         Instantiate(secondTowerPreviewPrefab);
     }

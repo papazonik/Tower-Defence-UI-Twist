@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5548432597886352216}
   - component: {fileID: 7802666750722089845}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71c069d705bb4041b8d2568e23250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 50
   speed: 0
 --- !u!1 &5548432598562817254
 GameObject:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d45f70f2d3c879345bfdacf8ca9840d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cadaa4266a9a43648bf2e5476a0f7d4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
