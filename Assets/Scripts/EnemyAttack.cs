@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
     public uint damage = 20;
     float attackCooldown = 0f;
@@ -52,15 +52,16 @@ public class Attack : MonoBehaviour
         else
         {
             float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
-            if (distance <= attackRange)
+            if (distance > attackRange)
             {
-                print("distance " + distance + " attack range: " + attackRange);
-                if (attackCooldown <= 0f)
-                {
-                    Shoot();
-                    enemyMovementScript.enabled = false;
-                    attackCooldown = 1f / attackRate;
-                }
+                enemyMovementScript.enabled = true;
+                return;
+            }
+            if (attackCooldown <= 0f)
+            {
+                Shoot();
+                enemyMovementScript.enabled = false;
+                attackCooldown = 1f / attackRate;
             }
         }
     }
