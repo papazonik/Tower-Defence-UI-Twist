@@ -12,21 +12,25 @@ public class GameManager : MonoBehaviour
     public Text goldDisplay;
     public TextMeshProUGUI pauseText;
     public Transform heartPrefab;
-    List<Transform> hearts;
+    public List<Transform> hearts;
     public GameObject gameOver;
     public AudioClip loseLife;
 
     bool paused = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         gameOver.SetActive(false);
         hearts = new List<Transform>();
         for (int i = 0; i < lives; i++)
         {
-           SpawnHeart(i);
+            SpawnHeart(i);
         }
+    }
+
+    void Start()
+    {
+
     }
 
     void SpawnHeart(int positionIndex)
@@ -34,20 +38,6 @@ public class GameManager : MonoBehaviour
         Vector3 spawnpos = new Vector3(-6.5f + positionIndex, 4, 0);
         Transform newHeart = Instantiate(heartPrefab, spawnpos, Quaternion.identity);
         hearts.Add(newHeart);
-    }
-
-    public void LoseHeart()
-    {
-        //LoseLife();
-        if (hearts.Count > 0)
-        {
-            if (hearts[hearts.Count - 1] == null)
-            {
-                return;
-            }
-            Destroy(hearts[hearts.Count - 1].gameObject);
-            hearts.RemoveAt(hearts.Count - 1);
-        }
     }
 
     void GameOver()
@@ -92,11 +82,24 @@ public class GameManager : MonoBehaviour
         return lives;
     }
 
+    public void LoseHeart()
+    {
+        if (hearts.Count > 0)
+        {
+            if (hearts[hearts.Count - 1] == null)
+            {
+                return;
+            }
+            Destroy(hearts[hearts.Count - 1].gameObject);
+        }
+    }
+
     public void LoseLife()
     {
         if (lives >= 0)
         {
             lives--;
+            hearts.RemoveAt(hearts.Count - 1);
             SoundManager.Instance.PlaySound(loseLife);
             if (lives == 0)
             {

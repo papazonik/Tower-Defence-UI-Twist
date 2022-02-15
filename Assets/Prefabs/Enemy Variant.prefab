@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7315902820252710564, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+      propertyPath: maxHealth
+      value: 140
+      objectReference: {fileID: 0}
     - target: {fileID: 81957902463393239, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
       propertyPath: m_Name
       value: Enemy Variant
@@ -65,3 +69,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+--- !u!1 &8471122600550750542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 81957902463393239, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+  m_PrefabInstance: {fileID: 8407188443528004761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &260289579535461357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471122600550750542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce03e33cf32a9cd4dbd3103a23cb223e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  projectilePrefab: {fileID: 5548432597886352219, guid: e418c5e49ab31c6448405084084aa417, type: 3}

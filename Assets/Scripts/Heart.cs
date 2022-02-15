@@ -33,11 +33,6 @@ public class Heart : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            health.TakeDamage(10);
-            SoundManager.Instance.PlaySound(takeDamage);
-        }
         if (health.getCurrentHealth() <= 25)
         {
             SetSprite(damage3);           

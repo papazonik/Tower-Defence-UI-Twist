@@ -21,7 +21,7 @@ public class Tower : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position,range);
     }
 
@@ -63,13 +63,6 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //print("BuildTower");
-            
-        }
-
-
         if (!currentTarget)
         {
             return;
