@@ -542,6 +542,7 @@ MonoBehaviour:
   goldDisplay: {fileID: 0}
   pauseText: {fileID: 145259755}
   heartPrefab: {fileID: 1120204568050442303, guid: e93322b263dedf64b828c57923bfdffc, type: 3}
+  hearts: []
   gameOver: {fileID: 353705113}
   loseLife: {fileID: 8300000, guid: de790dfc20a27294692ef239d3bb0db0, type: 3}
 --- !u!114 &251707126
@@ -577,7 +578,38 @@ MonoBehaviour:
     - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
     - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
     - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+  - enemies:
     - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+  - enemies:
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+  - enemies:
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 6096236688088405024, guid: bbc86208dda9bd44c8963341ec4699b6, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
+    - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
     - {fileID: 2321178650922651833, guid: 8ac17839ade252542b2c8a39fdcdb8eb, type: 3}
 --- !u!222 &251707127
 CanvasRenderer:
