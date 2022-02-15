@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pauseText;
     public Transform heartPrefab;
     public List<Transform> hearts;
+
     public GameObject gameOver;
+    public GameObject pauseMenu;
+    bool paused = false;
+
     public AudioClip loseLife;
 
-    bool paused = false;
 
     private void Awake()
     {
@@ -68,12 +71,15 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             paused = false;
             pauseText.text = ("Pause");
+            pauseMenu.SetActive(false);
+
         }
         else
         {
             Time.timeScale = 0.0f;
             paused = true;
             pauseText.text = ("Continue");
+            pauseMenu.SetActive(true);
         }
     }
 
