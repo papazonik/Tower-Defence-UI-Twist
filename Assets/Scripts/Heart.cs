@@ -23,7 +23,10 @@ public class Heart : MonoBehaviour
 
     private void OnDestroy()
     {
-        gameManager.LoseLife();
+        if (gameManager)
+        {
+            gameManager.LoseLife();
+        }
     }
 
     void SetSprite(Sprite sprite)
@@ -33,7 +36,7 @@ public class Heart : MonoBehaviour
 
     void Update()
     {
-        if (health.getCurrentHealth() <= 25)
+        if (health.getCurrentHealth() <= 35)
         {
             SetSprite(damage3);           
         }

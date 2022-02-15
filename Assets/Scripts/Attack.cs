@@ -5,18 +5,19 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public uint damage = 20;
-    float attackRate = 0.5f;
     float attackCooldown = 0f;
-    private float fireRate = 0.5f;
-    float attackRange = 2f;
+    private float attackRate = 0.5f;
+    public float attackRange = 3f;
     GameObject currentTarget;
     GameManager gameManager;
     public GameObject projectilePrefab;
+    EnemyMovement enemyMovementScript;
     
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         SetTarget();
+        enemyMovementScript = GetComponent<EnemyMovement>();
     }
 
     void SetTarget()
@@ -27,14 +28,6 @@ public class Attack : MonoBehaviour
         }
     }
 
-    void GoAttack()
-    {
-        //Stop if in range of last heart in heart list
-
-        //Stand still and deal damage over time to last heart in heart list
-
-        
-    }
     IEnumerator Iterate()
     {
         yield return new WaitForSeconds(1f);
@@ -48,10 +41,9 @@ public class Attack : MonoBehaviour
         projectile.SetTarget(currentTarget);
     }
 
-
-    // Update is called once per frame
     void Update()
     {
+        attackCooldown -= Time.deltaTime;
         if (!currentTarget)
         {
             SetTarget();
@@ -59,12 +51,17 @@ public class Attack : MonoBehaviour
         }
         else
         {
-            if (attackCooldown <= 0f)
+            float distance = Vector3.Distance(transform.position, currentTarget.transform.position);
+            if (distance <= attackRange)
             {
-                Shoot();
-                attackCooldown = 1f / fireRate;
+                print("distance " + distance + " attack range: " + attackRange);
+                if (attackCooldown <= 0f)
+                {
+                    Shoot();
+                    enemyMovementScript.enabled = false;
+                    attackCooldown = 1f / attackRate;
+                }
             }
-            attackCooldown -= Time.deltaTime;
         }
     }
 }
