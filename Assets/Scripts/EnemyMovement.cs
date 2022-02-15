@@ -8,14 +8,13 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform target;
     private int wayPointIndex = 0;
-    SpriteRenderer enemySpriteRenderer;
+    public SpriteRenderer enemySpriteRenderer;
     GameManager gameManager;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         target = Waypoints.wayPoints[wayPointIndex];
-        enemySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame

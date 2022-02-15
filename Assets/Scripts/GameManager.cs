@@ -108,12 +108,4 @@ public class GameManager : MonoBehaviour
         }
         print("Lives: " + lives);
     }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        //goldDisplay.text = gold.ToString();
-    }
 }

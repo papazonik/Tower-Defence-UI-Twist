@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
 
     public int getMaxHealth()
     {
-        return currentHealth;
+        return maxHealth;
     }
 
     public void TakeDamage(int damage)
